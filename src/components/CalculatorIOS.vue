@@ -134,14 +134,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    color: white;
-  }
 
   th {
     padding: 1.5rem 1rem;
