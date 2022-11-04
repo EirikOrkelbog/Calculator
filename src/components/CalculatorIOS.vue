@@ -1,15 +1,3 @@
-<!-- 
-
-
-- Fiks at når man trykker på operatorene skal '=' kjøre 
-
-
-
- -->
-
-
-
-
 <template>
   <div class="calculator">
     <table class="table">
@@ -24,28 +12,28 @@
               <td v-on:click="clearField" class="tableData__grey">C</td>
               <td v-on:click="setPositiveOrNegative" class="tableData__grey">+/-</td>
               <td v-on:click="percent" class="tableData__grey">%</td>
-              <td v-on:click="division" class="tableData__orange">÷</td>
+              <td v-on:click="division('/')" class="tableData__orange">÷</td>
           </tr>
 
           <tr>
               <td v-on:click="append('7')">7</td>
               <td v-on:click="append('8')">8</td>
               <td v-on:click="append('9')">9</td>
-              <td v-on:click="multiplication" class="tableData__orange">x</td>
+              <td v-on:click="multiplication('*')" class="tableData__orange">x</td>
           </tr>
 
           <tr>
               <td v-on:click="append('4')">4</td>
               <td v-on:click="append('5')">5</td>
               <td v-on:click="append('6')">6</td>
-              <td v-on:click="substraction" class="tableData__orange">-</td>
+              <td v-on:click="substraction('-')" class="tableData__orange">-</td>
           </tr>
 
           <tr>
               <td v-on:click="append('1')">1</td>
               <td v-on:click="append('2')">2</td>
               <td v-on:click="append('3')">3</td>
-              <td v-on:click="addition" class="tableData__orange">+</td>
+              <td v-on:click="addition('+')" class="tableData__orange">+</td>
           </tr>
 
           <tr>
@@ -117,22 +105,22 @@ export default {
     },
 
     division() {
-      this.operator = (a, b) => a / b;
+      this.operator = (a, b) => b / a;
       this.setPrevious();
     },
 
     multiplication() {
-      this.operator = (a, b) => a * b;
+      this.operator = (a, b) => b * a;
       this.setPrevious();
     },
 
     substraction() {
-      this.operator = (a, b) => a - b;
+      this.operator = (a, b) => b - a;
       this.setPrevious();
     },
 
     addition() {
-      this.operator = (a, b) => a + b;
+      this.operator = (a, b) => b + a;
       this.setPrevious();
     },
 
@@ -154,13 +142,24 @@ export default {
 					case '7':
 					case '8':
 					case '9':
+            break;
 					case '+':
+            this.addition(event.key);
+            break;
 					case '-':
+            this.substraction(event.key);
+            break;
 					case '/':
+            this.division(event.key);
+            break;
 					case '*':
+            this.multiplication(event.key);
+            break;
 					case '.':
+            this.dot(event.key);
+            break;
 					case '%':
-						this.append(event.key)
+            this.percent(event.key);
 						break;
 					case '=':
 					case 'Enter':
