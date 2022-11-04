@@ -65,9 +65,24 @@ export default {
       previous: null,
       current: '',
       operator: null,
-      operatorClicked: false
+      operatorClicked: false,
     }
   },
+
+  created() {
+			window.addEventListener('keyup', this.handleKeyup);
+		},
+
+    computed: {
+      currentAsNumber() {
+        return Number(this.current)
+      },
+
+      previousAsNumber() {
+        return Number(this.previous)
+      }
+    },
+
   methods: {
     clearField() {
       this.current = '';
@@ -79,7 +94,7 @@ export default {
     },
 
     percent() {
-      this.current = `${parseFloat(this.current) / 100}`;
+      this.current = `${this.currentAsNumber / 100}`;
     },
 
     append(number) {
@@ -122,12 +137,41 @@ export default {
     },
 
     equal() {
-      this.current = `${this.operator(
-        parseFloat(this.current), 
-        parseFloat(this.previous)
+      this.current = `${this.operator(this.currentAsNumber, this.previousAsNumber
       )}`;
       this.previous = null;
-    }
+    },
+
+    handleKeyup(event) {
+				switch(event.key) {
+					case '0':
+					case '1':
+					case '2':
+					case '3':
+					case '4':
+					case '5':
+					case '6':
+					case '7':
+					case '8':
+					case '9':
+					case '+':
+					case '-':
+					case '/':
+					case '*':
+					case '.':
+					case '%':
+						this.append(event.key)
+						break;
+					case '=':
+					case 'Enter':
+						this.equal()
+						break;
+					case 'Escape':
+					case 'Backspace':
+						this.clearField()
+						break;
+				}
+			}
   }
 }
 </script>
@@ -136,7 +180,7 @@ export default {
 <style scoped>
 
   th {
-    padding: 1.5rem 1rem;
+    padding: 2rem;
     font-size: 2.5rem;
     background-color: #4f85b775;
     border-radius: 10px;
@@ -147,7 +191,7 @@ export default {
   td {
     cursor: pointer;
     background-color: #313131;
-    padding: 1rem;
+    padding: 1rem 2rem;
     border-radius: 10px;
     box-shadow: 0 0 2rem rgba(0, 0, 0, 0.265);
   }
