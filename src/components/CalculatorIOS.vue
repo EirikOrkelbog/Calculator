@@ -3,43 +3,45 @@
     <table class="table">
       <thead>
           <tr>
-            <th colspan="4">{{ current || '0' }}</th>
+            <th colspan="3" class="table__header">{{ current || '0' }}</th>
           </tr>
       </thead>
 
       <tbody>
-          <tr>
-              <td v-on:click="clearField" class="tableData__grey">C</td>
-              <td v-on:click="setPositiveOrNegative" class="tableData__grey">+/-</td>
-              <td v-on:click="percent" class="tableData__grey">%</td>
-              <td v-on:click="division('/')" class="tableData__orange">÷</td>
+        <tr>
+            <td v-on:click="append('1')" @mouseenter="hover = true"
+                @mouseleave="hover = false" :class="{ 'td:hover': hover }">1</td>
+            <td v-on:click="append('2')">2</td>
+            <td v-on:click="append('3')">3</td>
           </tr>
-
+          
           <tr>
-              <td v-on:click="append('7')">7</td>
-              <td v-on:click="append('8')">8</td>
-              <td v-on:click="append('9')">9</td>
-              <td v-on:click="multiplication('*')" class="tableData__orange">x</td>
+            <td v-on:click="append('4')">4</td>
+            <td v-on:click="append('5')">5</td>
+            <td v-on:click="append('6')">6</td>
           </tr>
-
+          
           <tr>
-              <td v-on:click="append('4')">4</td>
-              <td v-on:click="append('5')">5</td>
-              <td v-on:click="append('6')">6</td>
-              <td v-on:click="substraction('-')" class="tableData__orange">-</td>
+            <td v-on:click="append('7')">7</td>
+            <td v-on:click="append('8')">8</td>
+            <td v-on:click="append('9')">9</td>
           </tr>
-
+          
           <tr>
-              <td v-on:click="append('1')">1</td>
-              <td v-on:click="append('2')">2</td>
-              <td v-on:click="append('3')">3</td>
-              <td v-on:click="addition('+')" class="tableData__orange">+</td>
+            <td v-on:click="append('0')">0</td>
+            <td v-on:click="addition('+')">+</td>
+            <td v-on:click="substraction('-')">-</td>
           </tr>
-
+          
           <tr>
-              <td v-on:click="append('0')" class="tableData__zero">0</td>
-              <td v-on:click="dot">.</td>
-              <td v-on:click="equal" colspan="2" class="tableData__orange">=</td>
+            <td v-on:click="division('/')">÷</td>
+            <td v-on:click="multiplication('*')">x</td> 
+            <td v-on:click="dot">.</td>
+          </tr>
+          
+          <tr>
+            <td v-on:click="clearField" >C</td>
+            <td v-on:click="equal" colspan="2">=</td>
           </tr>
       </tbody>
     </table>
@@ -54,6 +56,7 @@ export default {
       current: '',
       operator: null,
       operatorClicked: false,
+      hover: false,
     }
   },
 
@@ -72,6 +75,7 @@ export default {
     },
 
   methods: {
+
     clearField() {
       this.current = '';
     },
@@ -142,6 +146,7 @@ export default {
 					case '7':
 					case '8':
 					case '9':
+            this.append(event.key);
             break;
 					case '+':
             this.addition(event.key);
@@ -175,28 +180,29 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 
   th {
     padding: 2rem;
     font-size: 2.5rem;
-    background-color: #4f85b775;
+    background-color: var(--background);
     border-radius: 10px;
     text-align: end;
-    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.265);
   }
 
   td {
-    cursor: pointer;
-    background-color: #313131;
+    position: relative;
     padding: 1rem 2rem;
     border-radius: 10px;
-    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.265);
+    background-color: var(--background);
+    cursor: pointer;
   }
 
-  td:active {
-    background-color: darkgray;
+  td:hover {
+    background-color: yellow;
+    color: black;
+    transition: .3s;
   }
 
   .calculator {
@@ -205,35 +211,16 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.815), 
+    rgba(0, 0, 0, 0.801)), url(../assets/wallpaper.jpg);
+    --background: rgba(177, 163, 163, 0.1);
   }
 
   .table {
     text-align: center;
-    background-color: #225787;
     padding: 1rem;
     border-collapse: separate;
     border-spacing: .5rem;
-  }
-
-  .tableData__orange {
-    background-color: #F19706;
-    font-size: 1.6rem;
-  }
-
-  .tableData__orange:active {
-    background-color: #313131;
-  }
-
-  .tableData__grey {
-    background-color: darkgray;
-    color: black;
-  }
-
-  .tableData__grey:active {
-    background-color: white;
-  }
-
-  .tableData__zero {
-    text-align: start;
+    background-color: var(--background);
   }
 </style>
