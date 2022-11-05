@@ -185,8 +185,7 @@ export default {
 
   th {
     padding: 2rem;
-    font-size: 2.5rem;
-    background-color: var(--background);
+    font-size: 2rem;
     border-radius: 10px;
     text-align: end;
   }
@@ -195,14 +194,12 @@ export default {
     position: relative;
     padding: 1rem 2rem;
     border-radius: 10px;
-    background-color: var(--background);
     cursor: pointer;
+    transition: .5s;
   }
 
   td:hover {
-    background-color: yellow;
-    color: black;
-    transition: .3s;
+    background-color: #ffffff15;
   }
 
   .calculator {
@@ -213,7 +210,6 @@ export default {
     justify-content: center;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.815), 
     rgba(0, 0, 0, 0.801)), url(../assets/wallpaper.jpg);
-    --background: rgba(177, 163, 163, 0.1);
   }
 
   .table {
@@ -221,6 +217,7 @@ export default {
     padding: 1rem;
     border-collapse: separate;
     border-spacing: .5rem;
-    background-color: var(--background);
+    border-radius: 10px;
+    background-color: #ffffff0f; 
   }
 </style>

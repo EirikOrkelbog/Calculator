@@ -4,11 +4,13 @@
 
 <script>
 import CalculatorIOS from '../src/components/CalculatorIOS.vue'
+// import UnitCalculator from './components/UnitCalculator.vue';
 
 export default {
   name: 'App',
   components: {
-    CalculatorIOS
+    CalculatorIOS,
+    // UnitCalculator
   }
 }
 </script>
