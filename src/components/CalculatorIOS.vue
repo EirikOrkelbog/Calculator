@@ -34,7 +34,7 @@
           </tr>
           
           <tr>
-            <td v-on:click="division('/')">÷</td>
+            <td v-on:click="division('/')">/</td>
             <td v-on:click="multiplication('*')">x</td> 
             <td v-on:click="dot">.</td>
           </tr>
@@ -208,8 +208,8 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.815), 
-    rgba(0, 0, 0, 0.801)), url(../assets/wallpaper.jpg);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), 
+    rgba(0, 0, 0, 0.8)), url(../assets/wallpaper.jpg);
   }
 
   .table {

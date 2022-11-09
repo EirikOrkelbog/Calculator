@@ -1,16 +1,17 @@
 <template>
   <CalculatorIOS/>
+  <LengthConverter/>
 </template>
 
 <script>
 import CalculatorIOS from '../src/components/CalculatorIOS.vue'
-// import UnitCalculator from './components/UnitCalculator.vue';
+import LengthConverter from './components/LengthConverter.vue';
 
 export default {
   name: 'App',
   components: {
     CalculatorIOS,
-    // UnitCalculator
+    LengthConverter
   }
 }
 </script>
@@ -22,6 +23,7 @@ export default {
     margin: 0;
     padding: 0;
     font-size: 20px;
+    font-family: sans-serif;
     color: white;
   }
 </style>
