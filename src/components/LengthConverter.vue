@@ -5,7 +5,7 @@
 
 			<div class="converter__inputField">
 				<div class="converter__input">
-					<input v-on:keyup="handleMyResult()" v-model="input" type="number" placeholder="Input" id="input" autocomplete="off">
+					<input v-on:keyup="handleMyResult()" v-model="input" type="text" placeholder="Input" id="input" autocomplete="off">
 					<select v-on:change="handleMyResult()" v-model="inputType" id="inputType">
 						<option value="Millimeter">Millimeter</option>
 						<option value="Centimeter">Centimeter</option>
@@ -17,7 +17,7 @@
 				<span>=</span>
 
 				<div class="converter__input">
-					<input v-on:keyup="handleMyResult()" v-model="result" type="number" placeholder="Result" id="result" autocomplete="off">
+					<input v-on:keyup="handleMyResult()" v-model="result" type="text" placeholder="Result" id="result" autocomplete="off">
 					<select v-on:change="handleMyResult()" v-model="resultType" id="resultType">
 						<option value="Millimeter">Millimeter</option>
 						<option value="Centimeter">Centimeter</option>
@@ -101,11 +101,6 @@ input, select {
 	padding: .5rem;
 	background-color: #ffffff0f;
 	margin-top: 1rem;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
 }
 
 select {
